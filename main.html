@@ -1,16 +1,7 @@
 <!DOCTYPE html>
-<script src="wasm_exec.js"></script>
-<script>
-    // Polyfill
-    if (!WebAssembly.instantiateStreaming) {
-        WebAssembly.instantiateStreaming = async (resp, importObject) => {
-            const source = await (await resp).arrayBuffer();
-            return await WebAssembly.instantiate(source, importObject);
-        };
-    }
+<html>
 
-    const go = new Go();
-    WebAssembly.instantiateStreaming(fetch("solitaire.wasm"), go.importObject).then(result => {
-        go.run(result.instance);
-    });
-</script>
+<h1 style="text-align: center;"> my solitaire game implemented by golang w/ ebitengine </h1>
+<iframe src="game.html" width="800" height="800" scrolling="no" style="display: block; margin: 0 auto;"></iframe>
+
+</html>
